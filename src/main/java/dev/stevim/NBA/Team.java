@@ -7,17 +7,17 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "NBA Teams")
+@Document(collection = "NBA TEAMS")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Team {
     @Id
     private ObjectId id;
-    private Integer teamId;
-    private String abbreviation;
-    private String teamName;
-    private String simpleName;
-    private String location;
-
+    private String conference;
+    private String division;
+    private String name;
+    private String city;
+    private String state;
+    private String stadium;
 }

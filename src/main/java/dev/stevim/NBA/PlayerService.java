@@ -44,22 +44,4 @@ public class PlayerService {
         }
         playerRepository.deleteByPlayerId(playerId);
     }
-//    public Player updatePlayer(Integer playerId, Player playerRequest) {
-//        Optional<Player> existingPlayer = playerRepository.findByPlayerId(playerId);
-//        existingPlayer.setTeamId(playerRequest.getTeamId());
-//        return playerRepository.save(existingPlayer);
-//    }
-
-//    public Player updatePlayerByTeam(Integer playerId, Map<String, Object> fields) {
-//        Optional<Player> existingPlayer = playerRepository.findByPlayerId(playerId);
-//        if(existingPlayer.isPresent()) {
-//            fields.forEach((key, value) -> {
-//                Field field = ReflectionUtils.findField(Player.class, key);
-//                field.setAccessible(true);
-//                ReflectionUtils.setField(field, existingPlayer.get(), value);
-//            });
-//            return playerRepository.save(existingPlayer.get());
-//        }
-//        return null;
-//    }
 }

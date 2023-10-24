@@ -1,5 +1,6 @@
 package dev.stevim.NBA;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,23 @@ public class TeamService {
     public List<Team> allTeams() {
         return teamRepository.findAll();
     }
-//    public Optional<Team> teamSimpleName(String simpleName) {
-//        return teamRepository.findTeamBySimpleName(simpleName);
-//    }
-//    public Optional<Team> teamTeamName(String teamName) {
-//        return teamRepository.findTeamByTeamName(teamName);
-//    }
-    public Optional<List<Team>> teamLocation(String location) {
-        return teamRepository.findAllByLocation(location);
+    public Optional<List<Team>> teamByConference(String conference) {
+        return teamRepository.findAllByConference(conference);
+    }
+    public Optional<List<Team>> teamByDivision(String division) {
+        return teamRepository.findAllByDivision(division);
+    }
+    public Optional<List<Team>> teamByCity(String city) {
+        return teamRepository.findAllByCity(city);
+    }
+    public Optional<List<Team>> teamByState(String state) {
+        return teamRepository.findAllByState(state);
+    }
+    public void deleteTeam(ObjectId id) {
+        boolean exists = teamRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("Team does not exist");
+        }
+        teamRepository.deleteById(id);
     }
 }

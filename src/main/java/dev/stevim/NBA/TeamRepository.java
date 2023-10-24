@@ -9,7 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface TeamRepository extends MongoRepository<Team, ObjectId> {
-//    Optional<Team> findTeamBySimpleName(String simpleName);
-//    Optional<Team> findTeamByTeamName(String teamName);
-    Optional<List<Team>> findAllByLocation(String location);
+    Optional<List<Team>> findAllByConference(String conference);
+    Optional<List<Team>> findAllByDivision(String division);
+    Optional<List<Team>> findAllByCity(String city);
+    Optional<List<Team>> findAllByState(String state);
 }

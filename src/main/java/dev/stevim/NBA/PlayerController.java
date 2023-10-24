@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/players")
+@RequestMapping("/api/players")
 public class PlayerController {
     @Autowired
     private PlayerService playerService;
@@ -34,14 +34,6 @@ public class PlayerController {
     public void addPlayer(@RequestBody Player player) {
         playerService.createPlayer(player);
     }
-//    @PutMapping("/replace/{playerId}")
-//    public Player updatePlayer(@PathVariable Integer playerId, @RequestBody Player playerRequest) {
-//        return playerService.updatePlayer(playerId, playerRequest);
-//    }
-//    @PatchMapping("/edit/{playerId}")
-//    public Player updatePlayerTeam(@PathVariable Integer playerId, Map<String, Object> fields) {
-//        return playerService.updatePlayerByTeam(playerId,fields);
-//    }
     @PatchMapping(path = "/edit/{playerId}")
     public ResponseEntity<Player> patchPlayer(@PathVariable Integer playerId, @RequestBody Player playerRequest) {
         Optional<Player> player = playerService.getPlayer(playerId);
@@ -52,27 +44,9 @@ public class PlayerController {
         } else {
             return null;
         }
-//        player.get().setTeamId(playerRequest.getTeamId());
-//        Player playerResponse = playerService.savePlayer(player.get());
-//        ResponseEntity<Player> re = new ResponseEntity<>(playerResponse, HttpStatus.OK);
-//        return re;
     }
     @DeleteMapping(path = "{playerId}")
     public void deletePlayer(@PathVariable("playerId") Integer playerId) {
         playerService.deletePlayer(playerId);
     }
-
-
-//    @PatchMapping("/update/{playerId}")
-//    public ResponseEntity<Player> updateTeam(@RequestBody Player player, @PathVariable("id") Integer playerId) {
-//        Optional<Player> dbPlayer = playerService.getPlayer(playerId);
-//        if (dbPlayer.isPresent()) {
-//            Player playerToUpdate = dbPlayer.get();
-//            playerToUpdate.setTeamId(player.getTeamId());
-//            Player updatedPlayer = playerService.savePlayer(playerToUpdate);
-//            return new ResponseEntity<Player>(updatedPlayer, HttpStatus.ACCEPTED);
-//        } else {
-//            return null;
-//        }
-//    }
 }
